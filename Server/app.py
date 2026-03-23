@@ -13,6 +13,7 @@ from extensions import db, jwt
 from models import User
 from auth import auth_bp
 
+
 def create_app():
     app = Flask(__name__)
 
@@ -25,8 +26,8 @@ def create_app():
     db.init_app(app)
     jwt.init_app(app)
 
+    # Register blueprints
     app.register_blueprint(auth_bp)
-
 
     # Health check route
     @app.route('/api/health', methods=['GET'])
@@ -38,3 +39,5 @@ def create_app():
 if __name__ == "__main__":
     app = create_app()
     app.run(debug=True)
+
+#print (app.url_map)
